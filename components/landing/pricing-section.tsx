@@ -32,7 +32,8 @@ export function PricingSection() {
               }`}
             >
               {plan.featured && (
-                <div className="absolute -top-3 left-8 bg-[#2bb5d6] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-[#0d2942] shadow-sm">
+                <div className="absolute -top-3 left-8 flex items-center gap-1.5 border border-[#176fa6]/50 bg-[#071a2b] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-[#eaf4f8] shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#f58a24] shadow-[0_0_6px_rgba(245,138,36,0.8)] animate-pulse" />
                   Recommended
                 </div>
               )}

@@ -32,7 +32,7 @@ export function FooterSection() {
               <div key={title}>
                 <h3 className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-[#2bb5d6]">{title}</h3>
                 <ul className="space-y-4">
-                  {links.map((link) => <li key={link}><a href="#" className="text-sm text-[#b5d2e0] transition-colors hover:text-[#f58a24]">{link}</a></li>)}
+                  {links.map((link) => <li key={link}><a href="#" className="text-sm text-[#b5d2e0] transition-colors hover:text-[#2bb5d6]">{link}</a></li>)}
                 </ul>
               </div>
             ))}
@@ -43,7 +43,13 @@ export function FooterSection() {
           <div className="flex items-center gap-6">
             <a href="#" className="transition-colors hover:text-[#2bb5d6]">LinkedIn <ArrowUpRight className="ml-1 inline h-3 w-3" /></a>
             <a href="#" className="transition-colors hover:text-[#2bb5d6]">X <ArrowUpRight className="ml-1 inline h-3 w-3" /></a>
-            <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#2bb5d6]" /> Systems operational</span>
+            <span className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#f58a24] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#f58a24]" />
+              </span>
+              Systems operational
+            </span>
           </div>
         </div>
       </div>
