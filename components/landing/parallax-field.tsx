@@ -22,11 +22,12 @@ export function ParallaxField() {
       const latitude = Math.PI * (latIndex / latitudes - 0.5);
       const longitudeOffset = latIndex % 2 ? 0.08 : 0;
       for (let lonIndex = 0; lonIndex < longitudes; lonIndex += 1) {
-        const isSignal = (latIndex * 11 + lonIndex * 7) % 29 === 0;
+        // ~9.5% of dots are Selective Orange beacon nodes
+        const isSignal = (latIndex * 7 + lonIndex * 5) % 11 === 0;
         dots.push({
           lat: latitude,
           lon: (lonIndex / longitudes) * Math.PI * 2 + longitudeOffset,
-          size: isSignal ? 3.5 : lonIndex % 9 === 0 ? 4 : lonIndex % 4 === 0 ? 3 : 2,
+          size: isSignal ? 3.6 : lonIndex % 9 === 0 ? 4 : lonIndex % 4 === 0 ? 3 : 2,
           phase: (latIndex * longitudes + lonIndex) * 0.37,
           isSignal,
         });
@@ -150,21 +151,21 @@ export function ParallaxField() {
         const heightScale = depth > 0.45 ? 1.8 : 1;
 
         if (dot.isSignal) {
-          // Subtle Selective Orange beacon node (~3.4% of nodes)
-          if (depth > 0.4) {
+          // Selective Orange beacon nodes (~9.5% of nodes)
+          if (depth > 0.3) {
             context.fillStyle = isDark
-              ? `rgba(245, 138, 36, ${opacity * 0.22})`
-              : `rgba(235, 125, 20, ${opacity * 0.18})`;
+              ? `rgba(245, 138, 36, ${opacity * 0.32})`
+              : `rgba(235, 125, 20, ${opacity * 0.25})`;
             context.fillRect(
-              Math.round(x) - 1,
-              Math.round(y) - 1,
-              dot.size + 2,
-              dot.size * heightScale + 2
+              Math.round(x) - 1.5,
+              Math.round(y) - 1.5,
+              dot.size + 3,
+              dot.size * heightScale + 3
             );
           }
           context.fillStyle = isDark
-            ? `rgba(245, 138, 36, ${opacity * 0.95})`
-            : `rgba(235, 125, 20, ${opacity * 0.92})`;
+            ? `rgba(245, 138, 36, ${opacity * 0.98})`
+            : `rgba(235, 125, 20, ${opacity * 0.96})`;
         } else {
           // Core Digital Blue / Signal Cyan nodes
           context.fillStyle = isDark

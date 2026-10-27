@@ -40,7 +40,7 @@ export function Navigation() {
               />
             </span>
             <span className="font-display text-xl tracking-tight text-foreground transition-colors">FreeLanZZers</span>
-            <span className="font-mono text-[10px] text-primary">TM</span>
+            <span className="font-mono text-[10px] font-bold text-[#f58a24]">TM</span>
           </a>
 
           <div className="hidden items-center gap-10 md:flex">

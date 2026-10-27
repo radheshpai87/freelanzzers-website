@@ -43,7 +43,7 @@ export function FooterSection() {
           <div className="flex items-center gap-6">
             <a href="#" className="transition-colors hover:text-[#2bb5d6]">LinkedIn <ArrowUpRight className="ml-1 inline h-3 w-3" /></a>
             <a href="#" className="transition-colors hover:text-[#2bb5d6]">X <ArrowUpRight className="ml-1 inline h-3 w-3" /></a>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 text-[#f58a24] font-mono">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#f58a24] opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#f58a24]" />
