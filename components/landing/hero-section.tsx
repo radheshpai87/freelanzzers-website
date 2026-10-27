@@ -7,8 +7,8 @@ export function HeroSection() {
   return (
     <section className="relative isolate min-h-[760px] overflow-hidden border-b border-border bg-background">
       <ParallaxField />
-      <div className="relative z-20 mx-auto grid min-h-[760px] max-w-[1400px] items-center gap-10 px-6 py-24 lg:grid-cols-[1.1fr_.9fr] lg:px-12">
-        <div>
+      <div className="pointer-events-none relative z-20 mx-auto grid min-h-[760px] max-w-[1400px] items-center gap-10 px-6 py-24 lg:grid-cols-[1.1fr_.9fr] lg:px-12">
+        <div className="pointer-events-auto">
           <div className="mb-8 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-[#f58a24] shadow-[0_0_8px_rgba(245,138,36,0.7)]" />
             <span className="h-px w-8 bg-primary/40" />
