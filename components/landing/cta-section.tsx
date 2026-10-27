@@ -17,12 +17,12 @@ export function CtaSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-[#062238] py-24 text-[#f7fbfc] lg:py-32">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#062238] dark:bg-[#020b12] py-24 text-[#f7fbfc] lg:py-32 transition-colors duration-300">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className={`relative overflow-hidden border border-[#2b5970] bg-[#0a2d45] transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(185,239,65,0.16),transparent_34%)]" />
-          <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 border-b border-l border-[#2b5970]" />
-          <div className="pointer-events-none absolute bottom-0 left-0 h-36 w-36 border-r border-t border-[#2b5970]" />
+        <div className={`relative overflow-hidden border border-[#2b5970] dark:border-[#133d5c] bg-[#0a2d45] dark:bg-[#051826] transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(185,239,65,0.16),transparent_34%)] dark:bg-[radial-gradient(circle_at_80%_20%,rgba(0,210,247,0.16),transparent_34%)]" />
+          <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 border-b border-l border-[#2b5970] dark:border-[#133d5c]" />
+          <div className="pointer-events-none absolute bottom-0 left-0 h-36 w-36 border-r border-t border-[#2b5970] dark:border-[#133d5c]" />
           <div className="relative z-10 grid gap-16 px-8 py-16 lg:grid-cols-[1fr_0.7fr] lg:px-16 lg:py-24">
             <div>
               <p className="mb-6 font-mono text-xs uppercase tracking-[0.28em] text-[#52d4e8]">Commercial operating system</p>
