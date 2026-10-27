@@ -8,8 +8,8 @@ export function PricingSection() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>
-            <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[.24em] text-[#f58a24]">
-              <span className="h-px w-10 bg-[#f58a24]" />
+            <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[.24em] text-primary">
+              <span className="h-px w-10 bg-primary" />
               Install the infrastructure
             </div>
             <h2 className="text-6xl leading-[.9] tracking-[-.06em] lg:text-8xl">
@@ -32,19 +32,14 @@ export function PricingSection() {
               }`}
             >
               {plan.featured && (
-                <>
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#2bb5d6] via-[#f58a24] to-[#2bb5d6]" />
-                  <div className="absolute -top-3.5 left-8 flex items-center gap-2 rounded-full border border-[#f58a24]/60 bg-[#071a2b] px-3.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-[#f58a24] shadow-md">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#f58a24] shadow-[0_0_8px_rgba(245,138,36,0.9)] animate-pulse" />
-                    Recommended
-                  </div>
-                </>
+                <div className="absolute -top-3 left-8 flex items-center gap-1.5 border border-[#176fa6]/50 bg-[#071a2b] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-[#eaf4f8] shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#f58a24] shadow-[0_0_6px_rgba(245,138,36,0.8)] animate-pulse" />
+                  Recommended
+                </div>
               )}
               <div className="mb-10 flex items-start justify-between">
                 <span className="font-mono text-xs opacity-60">0{i + 1}</span>
-                <span className={`font-mono text-xs uppercase ${plan.featured ? "text-[#f58a24] font-medium" : "opacity-70"}`}>
-                  {plan.margin}
-                </span>
+                <span className="font-mono text-xs uppercase opacity-70">{plan.margin}</span>
               </div>
               <h3 className="max-w-xs text-3xl tracking-tight">{plan.name}</h3>
               <p className="mt-4 min-h-12 text-sm opacity-70">{plan.desc}</p>
@@ -52,7 +47,7 @@ export function PricingSection() {
               <ul className="mb-10 space-y-3">
                 {plan.features.map((f) => (
                   <li key={f} className="flex gap-3 text-sm opacity-85">
-                    <Check className={`h-4 w-4 shrink-0 ${plan.featured ? "text-[#f58a24]" : "text-[#2bb5d6]"}`} />
+                    <Check className="h-4 w-4 shrink-0 text-[#2bb5d6]" />
                     {f}
                   </li>
                 ))}

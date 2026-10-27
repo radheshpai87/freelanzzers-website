@@ -8,9 +8,9 @@ export function FeaturesSection() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 grid gap-8 lg:grid-cols-[1fr_.7fr]">
           <div>
-            <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[.24em] text-[#f58a24]">
-              <span className="h-2 w-2 rounded-full bg-[#f58a24] shadow-[0_0_8px_rgba(245,138,36,0.8)]" />
-              <span className="h-px w-8 bg-[#f58a24]/40" />
+            <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[.24em] text-primary">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#f58a24] shadow-[0_0_6px_rgba(245,138,36,0.6)]" />
+              <span className="h-px w-8 bg-primary/40" />
               The platform
             </div>
             <h2 className="max-w-3xl text-6xl leading-[.9] tracking-[-.06em] lg:text-8xl">
@@ -26,20 +26,20 @@ export function FeaturesSection() {
           {layers.map(({ number, icon: Icon, name, text }) => (
             <article
               key={name}
-              className="group bg-background p-8 transition-colors hover:bg-[#0d2942] hover:text-[#eaf4f8] lg:p-10"
+              className="group bg-background p-8 transition-colors hover:bg-primary hover:text-primary-foreground lg:p-10"
             >
               <div className="mb-16 flex items-start justify-between">
-                <Icon className="h-8 w-8 text-primary group-hover:text-[#2bb5d6] transition-colors" />
-                <span className="flex items-center gap-2 font-mono text-xs font-semibold text-[#f58a24]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f58a24] shadow-[0_0_6px_rgba(245,138,36,0.7)]" />
+                <Icon className="h-8 w-8 text-primary group-hover:text-primary-foreground transition-colors" />
+                <span className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground group-hover:text-primary-foreground/75">
+                  <span className="h-1 w-1 rounded-full bg-[#f58a24] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   {number}
                 </span>
               </div>
               <h3 className="text-3xl tracking-tight">{name}</h3>
-              <p className="mt-5 leading-relaxed text-muted-foreground group-hover:text-[#b5d2e0]">
+              <p className="mt-5 leading-relaxed text-muted-foreground group-hover:text-primary-foreground/80">
                 {text}
               </p>
-              <div className="mt-12 h-0.5 w-10 bg-[#f58a24] transition-all duration-300 group-hover:w-16" />
+              <div className="mt-12 h-px w-12 bg-primary transition-colors duration-300 group-hover:bg-[#f58a24]" />
             </article>
           ))}
         </div>
