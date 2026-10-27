@@ -36,7 +36,7 @@ export function CtaSection() {
                 FreeLanZZers connects local businesses to the customers already looking for them — then keeps the conversation moving.
               </p>
               <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row">
-                <Button size="lg" className="h-14 rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground hover:bg-[#34c4e6] shadow-[0_0_24px_rgba(43,181,214,0.4)] transition-all">
+                <Button size="lg" className="h-14 rounded-full bg-[#ffa24c] px-8 text-base font-semibold text-[#0d2942] hover:bg-[#ffb36d] shadow-[0_0_24px_rgba(255,162,76,0.4)] transition-all">
                   Start building your system <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button size="lg" variant="outline" className="h-14 rounded-full border-[#176fa6] bg-transparent px-8 text-base text-[#eaf4f8] hover:bg-[#176fa6]/25 hover:text-white transition-all">

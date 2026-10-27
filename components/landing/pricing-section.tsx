@@ -56,7 +56,7 @@ export function PricingSection() {
                 href="#contact"
                 className={`mt-auto flex items-center justify-between border px-4 py-3 text-sm font-semibold transition-all ${
                   plan.featured
-                    ? "border-[#2bb5d6] bg-[#2bb5d6] text-[#0d2942] hover:bg-[#34c4e6] hover:shadow-[0_0_15px_rgba(43,181,214,0.35)]"
+                    ? "border-[#ffa24c] bg-[#ffa24c] text-[#0d2942] hover:bg-[#ffb36d] hover:shadow-[0_0_18px_rgba(255,162,76,0.4)]"
                     : "border-border hover:border-primary hover:text-primary"
                 }`}
               >
