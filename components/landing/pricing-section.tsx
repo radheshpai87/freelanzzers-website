@@ -27,12 +27,12 @@ export function PricingSection() {
               key={plan.name}
               className={`relative flex flex-col border p-8 transition-colors lg:p-10 ${
                 plan.featured
-                  ? "border-[#f58a24] bg-[#0d2942] text-[#eaf4f8] shadow-xl shadow-black/10 dark:shadow-cyan-950/40"
+                  ? "border-[#2bb5d6] bg-[#0d2942] text-[#eaf4f8] shadow-2xl shadow-[#0d2942]/20 dark:shadow-cyan-950/50"
                   : "border-border bg-card text-card-foreground"
               }`}
             >
               {plan.featured && (
-                <div className="absolute -top-3 left-8 bg-[#f58a24] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white shadow-sm">
+                <div className="absolute -top-3 left-8 bg-[#2bb5d6] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-[#0d2942] shadow-sm">
                   Recommended
                 </div>
               )}
@@ -53,9 +53,9 @@ export function PricingSection() {
               </ul>
               <a
                 href="#contact"
-                className={`mt-auto flex items-center justify-between border px-4 py-3 text-sm font-medium transition-all ${
+                className={`mt-auto flex items-center justify-between border px-4 py-3 text-sm font-semibold transition-all ${
                   plan.featured
-                    ? "border-[#f58a24] bg-[#f58a24] text-white hover:bg-[#e07916]"
+                    ? "border-[#2bb5d6] bg-[#2bb5d6] text-[#0d2942] hover:bg-[#34c4e6] hover:shadow-[0_0_15px_rgba(43,181,214,0.35)]"
                     : "border-border hover:border-primary hover:text-primary"
                 }`}
               >

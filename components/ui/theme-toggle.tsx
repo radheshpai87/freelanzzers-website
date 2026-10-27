@@ -69,7 +69,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       id: Date.now() + i,
       angle: (i * (360 / 8)) * (Math.PI / 180),
       distance: 18 + Math.random() * 10,
-      color: toDark ? "#2bb5d6" : "#f58a24",
+      color: toDark ? "#2bb5d6" : "#f59e0b",
     }));
     setParticles(newParticles);
     setTimeout(() => setParticles([]), 500);
@@ -120,7 +120,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       >
         {/* Layer 1: Light Mode Sky Track (smooth opacity cross-fade) */}
         <div
-          className={`absolute inset-0 rounded-full border border-[#c4dce6] bg-gradient-to-r from-[#eaf4f8] via-[#f7f3e9] to-[#fcebd9] shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-in-out ${
+          className={`absolute inset-0 rounded-full border border-[#c8dfe9] bg-gradient-to-r from-[#eaf4f8] via-[#f0f8fc] to-[#fef8ed] shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-in-out ${
             isDark ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
@@ -158,7 +158,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
         >
           {/* Thumb Surface: Solar Gold Layer */}
           <div
-            className={`absolute inset-0 rounded-full bg-gradient-to-tr from-[#f58a24] via-[#fba848] to-[#f7f3e9] shadow-[0_0_12px_rgba(245,138,36,0.65)] ring-1 ring-[#f58a24] transition-opacity duration-500 ease-in-out ${
+            className={`absolute inset-0 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-100 shadow-[0_0_12px_rgba(245,158,11,0.55)] ring-1 ring-amber-300 transition-opacity duration-500 ease-in-out ${
               isDark ? "opacity-0" : "opacity-100"
             }`}
           />

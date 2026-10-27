@@ -12,31 +12,31 @@
   --warm-cream: #f7f3e9;
   --ice-blue: #eaf4f8;
 
-  /* Semantic Theme Tokens (Light Mode - Ice Blue surface foundation) */
+  /* Semantic Theme Tokens (Light Mode - Crisp White Cards on Ice Blue Surface) */
   --background: #eaf4f8;
   --foreground: #0d2942;
-  --card: #f7f3e9;
+  --card: #ffffff;
   --card-foreground: #0d2942;
-  --popover: #f7f3e9;
+  --popover: #ffffff;
   --popover-foreground: #0d2942;
   --primary: #2bb5d6;
-  --primary-foreground: #ffffff;
+  --primary-foreground: #0d2942;
   --secondary: #176fa6;
   --secondary-foreground: #ffffff;
   --muted: #d9ebf2;
   --muted-foreground: #486a82;
-  --accent: #f58a24;
-  --accent-foreground: #ffffff;
+  --accent: #2bb5d6;
+  --accent-foreground: #0d2942;
   --destructive: #d85d62;
   --destructive-foreground: #ffffff;
-  --border: #c4dce6;
+  --border: #c8dfe9;
   --input: #d9ebf2;
   --ring: #2bb5d6;
   --chart-1: #2bb5d6;
   --chart-2: #176fa6;
-  --chart-3: #f58a24;
-  --chart-4: #0d2942;
-  --chart-5: #486a82;
+  --chart-3: #0d2942;
+  --chart-4: #486a82;
+  --chart-5: #eaf4f8;
   --radius: 0.375rem;
   --sidebar: #0d2942;
   --sidebar-foreground: #eaf4f8;
@@ -44,12 +44,12 @@
   --sidebar-primary-foreground: #0d2942;
   --sidebar-accent: #176fa6;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #c4dce6;
+  --sidebar-border: #c8dfe9;
   --sidebar-ring: #2bb5d6;
 }
 
 .dark {
-  /* Semantic Theme Tokens (Dark Mode - Deep Navy surface foundation) */
+  /* Semantic Theme Tokens (Dark Mode - Deep Navy Surface Foundation) */
   --background: #071a2b;
   --foreground: #eaf4f8;
   --card: #0d2942;
@@ -62,8 +62,8 @@
   --secondary-foreground: #ffffff;
   --muted: #0f3352;
   --muted-foreground: #8bb1c7;
-  --accent: #f58a24;
-  --accent-foreground: #ffffff;
+  --accent: #2bb5d6;
+  --accent-foreground: #071a2b;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: #1a4366;
@@ -71,9 +71,9 @@
   --ring: #2bb5d6;
   --chart-1: #2bb5d6;
   --chart-2: #176fa6;
-  --chart-3: #f58a24;
-  --chart-4: #8bb1c7;
-  --chart-5: #eaf4f8;
+  --chart-3: #8bb1c7;
+  --chart-4: #eaf4f8;
+  --chart-5: #0d2942;
   --sidebar: #071a2b;
   --sidebar-foreground: #eaf4f8;
   --sidebar-primary: #2bb5d6;

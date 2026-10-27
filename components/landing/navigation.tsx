@@ -62,7 +62,7 @@ export function Navigation() {
             </a>
             <Button
               size="sm"
-              className="rounded-full bg-accent px-5 font-medium text-accent-foreground transition-all hover:bg-accent/90 hover:shadow-[0_0_15px_rgba(245,138,36,0.35)]"
+              className="rounded-full bg-primary px-5 font-semibold text-primary-foreground transition-all hover:bg-[#34c4e6] hover:shadow-[0_0_18px_rgba(43,181,214,0.45)] hover:-translate-y-0.5"
             >
               Start a system
             </Button>
@@ -94,7 +94,7 @@ export function Navigation() {
                 </a>
               ))}
               <div className="mt-4 flex flex-col gap-3">
-                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button className="rounded-full bg-primary font-semibold text-primary-foreground hover:bg-[#34c4e6]">
                   Start a system
                 </Button>
               </div>
