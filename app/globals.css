@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #eef7fa;
@@ -37,6 +37,60 @@
   --sidebar-accent-foreground: oklch(0.94 0.005 90);
   --sidebar-border: oklch(0.18 0.008 260);
   --sidebar-ring: oklch(0.55 0.015 90);
+}
+
+.dark {
+  --background: #030e17;
+  --foreground: #eef7fa;
+  --card: #061928;
+  --card-foreground: #eef7fa;
+  --popover: #061928;
+  --popover-foreground: #eef7fa;
+  --primary: #00d2f7;
+  --primary-foreground: #030e17;
+  --secondary: #0a253a;
+  --secondary-foreground: #eef7fa;
+  --muted: #092033;
+  --muted-foreground: #7aa2b8;
+  --accent: #00d2f7;
+  --accent-foreground: #030e17;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #133954;
+  --input: #0a253a;
+  --ring: #00d2f7;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: #061928;
+  --sidebar-foreground: #eef7fa;
+  --sidebar-primary: #00d2f7;
+  --sidebar-primary-foreground: #030e17;
+  --sidebar-accent: #0a253a;
+  --sidebar-accent-foreground: #eef7fa;
+  --sidebar-border: #133954;
+  --sidebar-ring: #00d2f7;
+}
+
+/* Circular View Transition for seamless theme toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+.dark::view-transition-new(root) {
+  z-index: 1;
 }
 
 @theme inline {
