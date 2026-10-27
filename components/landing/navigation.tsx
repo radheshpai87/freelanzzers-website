@@ -31,12 +31,12 @@ export function Navigation() {
         }`}
       >
         <div className={`flex items-center justify-between px-6 lg:px-8 ${isScrolled ? "h-14" : "h-20"}`}>
-          <a href="#" className="flex items-center gap-2" aria-label="FreeLanZZers home">
-            <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-transparent">
+          <a href="#" className="flex items-center gap-2.5" aria-label="FreeLanZZers home">
+            <span className="flex h-9 w-9 items-center justify-center bg-transparent">
               <img
                 src="/freelanzzers-emblem-dark.png"
                 alt="FreeLanZZers logo"
-                className="h-full w-full object-contain mix-blend-multiply dark:mix-blend-screen dark:brightness-125 dark:filter dark:drop-shadow-[0_0_8px_rgba(0,210,247,0.5)] transition-all duration-300"
+                className="h-full w-full object-contain"
               />
             </span>
             <span className="font-display text-xl tracking-tight text-foreground transition-colors">FreeLanZZers</span>

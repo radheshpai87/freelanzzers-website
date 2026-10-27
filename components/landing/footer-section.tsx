@@ -14,7 +14,16 @@ export function FooterSection() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid gap-12 border-b border-[#c7dce3] dark:border-[#133d5c] py-16 lg:grid-cols-[1.1fr_2fr] lg:py-24">
           <div>
-            <div className="mb-6 flex items-center gap-3"><span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-transparent"><img src="/freelanzzers-emblem-dark.png" alt="FreeLanZZers logo" className="h-full w-full object-contain mix-blend-screen" /></span><p className="font-mono text-xs uppercase tracking-[0.28em] text-[#52d4e8]">FreeLanZZers Technologies</p></div>
+            <div className="mb-6 flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center bg-transparent">
+                <img
+                  src="/freelanzzers-emblem-dark.png"
+                  alt="FreeLanZZers logo"
+                  className="h-full w-full object-contain"
+                />
+              </span>
+              <p className="font-mono text-xs uppercase tracking-[0.28em] text-[#52d4e8]">FreeLanZZers Technologies</p>
+            </div>
             <h2 className="mt-6 max-w-xl text-4xl leading-[0.95] tracking-[-0.045em] md:text-6xl">The infrastructure behind local commerce.</h2>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-[#b7d0d8]">A commercial operating system for businesses that want to turn local demand into verified conversations, conversions, and repeat revenue.</p>
           </div>
