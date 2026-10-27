@@ -107,7 +107,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
   }
 
   return (
-    <div className={`relative inline-flex items-center gap-2 ${className}`}>
+    <div className={`relative inline-flex items-center ${className}`}>
       <button
         ref={buttonRef}
         type="button"
@@ -225,17 +225,6 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
           ))}
         </div>
       </button>
-
-      {/* Futuristic status badge */}
-      <span className="hidden font-mono text-[10px] uppercase tracking-wider text-muted-foreground/80 xl:inline-block">
-        <span
-          className={`mr-1 inline-block h-1.5 w-1.5 rounded-full align-middle transition-colors ${
-            isDark ? "bg-[#00d2f7] shadow-[0_0_6px_#00d2f7]" : "bg-amber-400 shadow-[0_0_6px_#f59e0b]"
-          }`}
-        />
-        {isDark ? "DARK" : "LIGHT"}
-        <span className="ml-1 opacity-50">[D]</span>
-      </span>
     </div>
   );
 }
