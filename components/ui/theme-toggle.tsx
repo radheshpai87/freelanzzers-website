@@ -5,8 +5,6 @@ import { useTheme } from "next-themes";
 
 interface Particle {
   id: number;
-  x: number;
-  y: number;
   angle: number;
   distance: number;
   color: string;
@@ -22,12 +20,15 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     setMounted(true);
   }, []);
 
-  const isDark = mounted ? (resolvedTheme || theme) === "dark" : true;
+  const currentTheme = mounted ? resolvedTheme || theme : "dark";
+  const isDark = currentTheme === "dark";
 
   // Gentle high-tech audio chime using Web Audio API
   const playToggleSound = useCallback((toDark: boolean) => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       if (!AudioCtx) return;
       const ctx = new AudioCtx();
       if (ctx.state === "suspended") {
@@ -40,19 +41,17 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       gain.connect(ctx.destination);
 
       const now = ctx.currentTime;
-      gain.gain.setValueAtTime(0.018, now);
+      gain.gain.setValueAtTime(0.015, now);
 
       if (toDark) {
-        // Futuristic descending cyber blip
         osc.type = "sine";
-        osc.frequency.setValueAtTime(840, now);
-        osc.frequency.exponentialRampToValueAtTime(320, now + 0.12);
+        osc.frequency.setValueAtTime(780, now);
+        osc.frequency.exponentialRampToValueAtTime(360, now + 0.12);
         gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
       } else {
-        // Uplifting celestial morning chime
         osc.type = "triangle";
-        osc.frequency.setValueAtTime(440, now);
-        osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+        osc.frequency.setValueAtTime(420, now);
+        osc.frequency.exponentialRampToValueAtTime(840, now + 0.12);
         gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
       }
 
@@ -60,63 +59,27 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       osc.stop(now + 0.15);
       setTimeout(() => ctx.close().catch(() => {}), 250);
     } catch {
-      // Audio autoplay policy or unavailable - silently ignore
+      // Silently ignore if audio blocked
     }
   }, []);
 
-  // Trigger burst particles
+  // Trigger burst particles around the thumb
   const spawnParticles = useCallback((toDark: boolean) => {
     const newParticles: Particle[] = Array.from({ length: 8 }).map((_, i) => ({
       id: Date.now() + i,
-      x: 0,
-      y: 0,
       angle: (i * (360 / 8)) * (Math.PI / 180),
-      distance: 18 + Math.random() * 12,
+      distance: 18 + Math.random() * 10,
       color: toDark ? "#00d2f7" : "#f59e0b",
     }));
     setParticles(newParticles);
-    setTimeout(() => setParticles([]), 600);
+    setTimeout(() => setParticles([]), 500);
   }, []);
 
-  const handleToggle = useCallback((e?: React.MouseEvent) => {
+  const handleToggle = useCallback(() => {
     const nextTheme = isDark ? "light" : "dark";
     playToggleSound(!isDark);
     spawnParticles(!isDark);
-
-    // Smooth circular ripple transition if browser supports startViewTransition
-    const supportsViewTransition = typeof document !== "undefined" && "startViewTransition" in document;
-
-    if (supportsViewTransition && e) {
-      const x = e.clientX;
-      const y = e.clientY;
-      const endRadius = Math.hypot(
-        Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y)
-      );
-
-      const transition = (document as unknown as { startViewTransition: (cb: () => void) => { ready: Promise<void> } }).startViewTransition(() => {
-        setTheme(nextTheme);
-      });
-
-      transition.ready.then(() => {
-        const clipPath = [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`,
-        ];
-        document.documentElement.animate(
-          {
-            clipPath: nextTheme === "dark" ? clipPath : [...clipPath].reverse(),
-          },
-          {
-            duration: 450,
-            easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-            pseudoElement: nextTheme === "dark" ? "::view-transition-new(root)" : "::view-transition-old(root)",
-          }
-        );
-      });
-    } else {
-      setTheme(nextTheme);
-    }
+    setTheme(nextTheme);
   }, [isDark, playToggleSound, spawnParticles, setTheme]);
 
   // Global keyboard shortcut 'd' / 'D' to toggle
@@ -153,58 +116,68 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
         aria-label={`Switch to ${isDark ? "light" : "dark"} mode (Shortcut: Press D)`}
         title={`Toggle Theme [D] — Currently ${isDark ? "Dark" : "Light"}`}
         onClick={handleToggle}
-        className={`group relative inline-flex h-9 w-[78px] shrink-0 cursor-pointer select-none items-center rounded-full border p-1 transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
-          isDark
-            ? "border-[#133d5c] bg-gradient-to-r from-[#030e17] via-[#071c2c] to-[#04121d] shadow-[0_0_15px_rgba(0,210,247,0.15)] hover:border-[#00d2f7]/50 hover:shadow-[0_0_20px_rgba(0,210,247,0.3)]"
-            : "border-[#c7dce3] bg-gradient-to-r from-[#e0f2fe] via-[#f0f9ff] to-[#fef3c7] shadow-[0_0_12px_rgba(245,158,11,0.15)] hover:border-[#00a9c7] hover:shadow-[0_0_18px_rgba(0,169,199,0.25)]"
-        }`}
+        className="group relative inline-flex h-9 w-[76px] shrink-0 cursor-pointer select-none items-center rounded-full p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
-        {/* Sky Ambient Details / Background Track */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">
-          {/* Day details: Warm Sun Rays flare */}
-          <div
-            className={`absolute left-2 top-1/2 -translate-y-1/2 transition-all duration-500 ${
-              isDark ? "opacity-0 scale-50 -translate-x-3" : "opacity-100 scale-100 translate-x-0"
-            }`}
-          >
-            <div className="h-4 w-4 rounded-full bg-amber-400/20 blur-[3px]" />
+        {/* Layer 1: Light Mode Sky Track (smooth opacity cross-fade) */}
+        <div
+          className={`absolute inset-0 rounded-full border border-[#c7dce3] bg-gradient-to-r from-[#e0f2fe] via-[#f0f9ff] to-[#fef3c7] shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-in-out ${
+            isDark ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+        >
+          {/* Day Ambient Cloud & Sunlight Flare */}
+          <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1 opacity-75">
+            <span className="h-1.5 w-3.5 rounded-full bg-sky-200/80" />
+            <span className="h-1 w-2 rounded-full bg-sky-200/60" />
           </div>
+        </div>
 
-          {/* Night details: Twinkling Constellation Stars */}
-          <div
-            className={`absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1 transition-all duration-500 ${
-              isDark ? "opacity-100 scale-100 translate-x-0" : "opacity-0 scale-50 translate-x-3"
-            }`}
-          >
+        {/* Layer 2: Dark Mode Galaxy Track (smooth opacity cross-fade) */}
+        <div
+          className={`absolute inset-0 rounded-full border border-[#133d5c] bg-gradient-to-r from-[#030e17] via-[#071c2c] to-[#04121d] shadow-[inset_0_2px_4px_rgba(0,0,0,0.5),0_0_15px_rgba(0,210,247,0.18)] transition-opacity duration-500 ease-in-out ${
+            isDark ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          {/* Night Constellation Twinkling Stars */}
+          <div className="absolute left-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 opacity-90">
             <span className="h-1 w-1 rounded-full bg-cyan-200 animate-pulse" />
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 animate-ping opacity-75" style={{ animationDuration: "2.4s" }} />
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-cyan-300 animate-ping opacity-60"
+              style={{ animationDuration: "2.5s" }}
+            />
             <span className="h-0.5 w-0.5 rounded-full bg-white opacity-80" />
           </div>
         </div>
 
         {/* The Celestial Slider Thumb */}
         <div
-          className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) ${
-            isDark
-              ? "translate-x-[42px] bg-gradient-to-tr from-[#0284c7] via-[#00a9c7] to-[#38bdf8] text-[#030e17] shadow-[0_0_14px_rgba(0,210,247,0.75)] ring-1 ring-[#00d2f7]/80"
-              : "translate-x-0 bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-200 text-amber-950 shadow-[0_0_12px_rgba(245,158,11,0.65)] ring-1 ring-amber-400"
-          }`}
+          className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full transition-transform duration-500 will-change-transform"
+          style={{
+            transform: isDark ? "translateX(40px)" : "translateX(0px)",
+            transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+          }}
         >
-          {isDark ? (
-            /* Cyber Lunar Orb */
+          {/* Thumb Surface: Solar Gold Layer */}
+          <div
+            className={`absolute inset-0 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-200 shadow-[0_0_12px_rgba(245,158,11,0.65)] ring-1 ring-amber-400 transition-opacity duration-500 ease-in-out ${
+              isDark ? "opacity-0" : "opacity-100"
+            }`}
+          />
+
+          {/* Thumb Surface: Cyber Cyan Lunar Layer */}
+          <div
+            className={`absolute inset-0 rounded-full bg-gradient-to-tr from-[#0284c7] via-[#00a9c7] to-[#38bdf8] shadow-[0_0_14px_rgba(0,210,247,0.75)] ring-1 ring-[#00d2f7]/80 transition-opacity duration-500 ease-in-out ${
+              isDark ? "opacity-100" : "opacity-0"
+            }`}
+          />
+
+          {/* Icon: Sun (Smooth rotation, scale, and fade) */}
+          <div
+            className={`absolute inset-0 flex items-center justify-center text-amber-950 transition-all duration-500 ease-out ${
+              isDark ? "scale-0 rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"
+            }`}
+          >
             <svg
-              className="h-4 w-4 transition-transform duration-500 rotate-0 group-hover:-rotate-12"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              <circle cx="15.5" cy="8.5" r="1" fill="#030e17" opacity="0.6" />
-              <circle cx="17.5" cy="12.5" r="0.75" fill="#030e17" opacity="0.4" />
-            </svg>
-          ) : (
-            /* Solar Corona Orb */
-            <svg
-              className="h-4 w-4 transition-transform duration-700 rotate-0 group-hover:rotate-90 text-amber-900"
+              className="h-4 w-4"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -222,7 +195,20 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
               <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
               <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
             </svg>
-          )}
+          </div>
+
+          {/* Icon: Moon (Smooth rotation, scale, and fade) */}
+          <div
+            className={`absolute inset-0 flex items-center justify-center text-[#030e17] transition-all duration-500 ease-out ${
+              isDark ? "scale-100 rotate-0 opacity-100" : "scale-0 -rotate-90 opacity-0"
+            }`}
+          >
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              <circle cx="15.5" cy="8.5" r="1" fill="#030e17" opacity="0.6" />
+              <circle cx="17.5" cy="12.5" r="0.75" fill="#030e17" opacity="0.4" />
+            </svg>
+          </div>
 
           {/* Micro Particle Sparks radiating outwards on toggle */}
           {particles.map((p) => (
