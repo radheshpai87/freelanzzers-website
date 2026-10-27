@@ -46,7 +46,7 @@ export function ParallaxField() {
 
       const isDark = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
 
-      context.strokeStyle = isDark ? "rgba(0, 210, 247, 0.08)" : "rgba(6, 34, 56, 0.08)";
+      context.strokeStyle = isDark ? "rgba(43, 181, 214, 0.10)" : "rgba(13, 41, 66, 0.08)";
       context.lineWidth = 1;
       for (let x = 0; x < width; x += 112) {
         context.beginPath(); context.moveTo(x, 0); context.lineTo(x, height); context.stroke();
@@ -80,8 +80,8 @@ export function ParallaxField() {
         if (opacity < 0.1) continue;
 
         context.fillStyle = isDark
-          ? `rgba(0, 210, 247, ${opacity * 0.95})`
-          : `rgba(0, 137, 220, ${opacity})`;
+          ? `rgba(43, 181, 214, ${opacity * 0.95})`
+          : `rgba(23, 111, 166, ${opacity})`;
         const heightScale = depth > 0.45 ? 1.8 : 1;
         context.fillRect(Math.round(x), Math.round(y), dot.size, dot.size * heightScale);
       }

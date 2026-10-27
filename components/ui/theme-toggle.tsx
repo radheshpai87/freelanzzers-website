@@ -69,7 +69,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       id: Date.now() + i,
       angle: (i * (360 / 8)) * (Math.PI / 180),
       distance: 18 + Math.random() * 10,
-      color: toDark ? "#00d2f7" : "#f59e0b",
+      color: toDark ? "#2bb5d6" : "#f58a24",
     }));
     setParticles(newParticles);
     setTimeout(() => setParticles([]), 500);
@@ -120,28 +120,28 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       >
         {/* Layer 1: Light Mode Sky Track (smooth opacity cross-fade) */}
         <div
-          className={`absolute inset-0 rounded-full border border-[#c7dce3] bg-gradient-to-r from-[#e0f2fe] via-[#f0f9ff] to-[#fef3c7] shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-in-out ${
+          className={`absolute inset-0 rounded-full border border-[#c4dce6] bg-gradient-to-r from-[#eaf4f8] via-[#f7f3e9] to-[#fcebd9] shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-in-out ${
             isDark ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
           {/* Day Ambient Cloud & Sunlight Flare */}
           <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1 opacity-75">
-            <span className="h-1.5 w-3.5 rounded-full bg-sky-200/80" />
-            <span className="h-1 w-2 rounded-full bg-sky-200/60" />
+            <span className="h-1.5 w-3.5 rounded-full bg-[#176fa6]/20" />
+            <span className="h-1 w-2 rounded-full bg-[#176fa6]/10" />
           </div>
         </div>
 
         {/* Layer 2: Dark Mode Galaxy Track (smooth opacity cross-fade) */}
         <div
-          className={`absolute inset-0 rounded-full border border-[#133d5c] bg-gradient-to-r from-[#030e17] via-[#071c2c] to-[#04121d] shadow-[inset_0_2px_4px_rgba(0,0,0,0.5),0_0_15px_rgba(0,210,247,0.18)] transition-opacity duration-500 ease-in-out ${
+          className={`absolute inset-0 rounded-full border border-[#1a4366] bg-gradient-to-r from-[#061624] via-[#0d2942] to-[#071a2b] shadow-[inset_0_2px_4px_rgba(0,0,0,0.5),0_0_15px_rgba(43,181,214,0.18)] transition-opacity duration-500 ease-in-out ${
             isDark ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >
           {/* Night Constellation Twinkling Stars */}
           <div className="absolute left-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 opacity-90">
-            <span className="h-1 w-1 rounded-full bg-cyan-200 animate-pulse" />
+            <span className="h-1 w-1 rounded-full bg-[#2bb5d6] animate-pulse" />
             <span
-              className="h-1.5 w-1.5 rounded-full bg-cyan-300 animate-ping opacity-60"
+              className="h-1.5 w-1.5 rounded-full bg-[#2bb5d6] animate-ping opacity-60"
               style={{ animationDuration: "2.5s" }}
             />
             <span className="h-0.5 w-0.5 rounded-full bg-white opacity-80" />
@@ -158,14 +158,14 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
         >
           {/* Thumb Surface: Solar Gold Layer */}
           <div
-            className={`absolute inset-0 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-200 shadow-[0_0_12px_rgba(245,158,11,0.65)] ring-1 ring-amber-400 transition-opacity duration-500 ease-in-out ${
+            className={`absolute inset-0 rounded-full bg-gradient-to-tr from-[#f58a24] via-[#fba848] to-[#f7f3e9] shadow-[0_0_12px_rgba(245,138,36,0.65)] ring-1 ring-[#f58a24] transition-opacity duration-500 ease-in-out ${
               isDark ? "opacity-0" : "opacity-100"
             }`}
           />
 
           {/* Thumb Surface: Cyber Cyan Lunar Layer */}
           <div
-            className={`absolute inset-0 rounded-full bg-gradient-to-tr from-[#0284c7] via-[#00a9c7] to-[#38bdf8] shadow-[0_0_14px_rgba(0,210,247,0.75)] ring-1 ring-[#00d2f7]/80 transition-opacity duration-500 ease-in-out ${
+            className={`absolute inset-0 rounded-full bg-gradient-to-tr from-[#176fa6] via-[#2bb5d6] to-[#67d5ee] shadow-[0_0_14px_rgba(43,181,214,0.75)] ring-1 ring-[#2bb5d6]/80 transition-opacity duration-500 ease-in-out ${
               isDark ? "opacity-100" : "opacity-0"
             }`}
           />
