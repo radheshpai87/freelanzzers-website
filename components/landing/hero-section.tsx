@@ -19,13 +19,13 @@ export function HeroSection() {
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#pricing"
-              className="group inline-flex items-center gap-3 bg-[#ffa24c] px-7 py-4 text-sm font-semibold text-[#0d2942] transition-all hover:-translate-y-1 hover:bg-[#ffb36d] hover:shadow-[0_0_24px_rgba(255,162,76,0.4)]"
+              className="group inline-flex items-center gap-3 rounded-full bg-[#ffa24c] px-7 py-4 text-sm font-semibold text-[#0d2942] transition-all hover:-translate-y-1 hover:bg-[#ffb36d] hover:shadow-[0_0_24px_rgba(255,162,76,0.4)]"
             >
               Install your COS <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#architecture"
-              className="inline-flex items-center gap-3 border border-border px-6 py-4 text-sm transition-colors hover:border-primary hover:text-primary"
+              className="inline-flex items-center gap-3 rounded-full border border-border px-6 py-4 text-sm transition-colors hover:border-primary hover:text-primary"
             >
               See how it works
             </a>

@@ -54,7 +54,7 @@ export function PricingSection() {
               </ul>
               <a
                 href="#contact"
-                className={`mt-auto flex items-center justify-between border px-4 py-3 text-sm font-semibold transition-all ${
+                className={`mt-auto flex items-center justify-between rounded-full border px-6 py-3.5 text-sm font-semibold transition-all ${
                   plan.featured
                     ? "border-[#ffa24c] bg-[#ffa24c] text-[#0d2942] hover:bg-[#ffb36d] hover:shadow-[0_0_18px_rgba(255,162,76,0.4)]"
                     : "border-border hover:border-primary hover:text-primary"

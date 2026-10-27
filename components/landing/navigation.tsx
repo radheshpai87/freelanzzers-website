@@ -72,7 +72,7 @@ export function Navigation() {
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-1.5 text-primary focus:outline-none"
+              className="rounded-full p-2 text-primary focus:outline-none hover:bg-primary/10 transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
